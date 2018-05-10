@@ -1,0 +1,503 @@
+<%layout('../layout')%>
+
+    <div id="page-wrapper">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Dashboard</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-comments fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">26</div>
+                                <div>New Comments!</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right">
+                                <i class="fa fa-arrow-circle-right"></i>
+                            </span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-green">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-tasks fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">12</div>
+                                <div>New Tasks!</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right">
+                                <i class="fa fa-arrow-circle-right"></i>
+                            </span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-yellow">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-shopping-cart fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">124</div>
+                                <div>New Orders!</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right">
+                                <i class="fa fa-arrow-circle-right"></i>
+                            </span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="panel panel-red">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <i class="fa fa-support fa-5x"></i>
+                            </div>
+                            <div class="col-xs-9 text-right">
+                                <div class="huge">13</div>
+                                <div>Support Tickets!</div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#">
+                        <div class="panel-footer">
+                            <span class="pull-left">View Details</span>
+                            <span class="pull-right">
+                                <i class="fa fa-arrow-circle-right"></i>
+                            </span>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-bar-chart-o fa-fw"></i> Safe Math for token allocation
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class='col-sm-12 form-group'>
+                                    <div class='col-sm-6'>
+                                        <label>Number of Token</label>
+                                    </div>
+                                    <div class='col-sm-6'>
+                                        <input type="text" class="form-control" name="t_num_of_holding" id="num_holding" value="1000000000" readonly/>
+                                    </div>
+                                </div>
+                                <div class='col-sm-12 form-group'>
+                                    <div class='col-sm-6'>
+                                        <label>Allowcation of Token</label>
+                                    </div>
+                                    <div class='col-sm-6'>
+                                        <input type="text" class="form-control" name="Allowcation_" id="Allowcation_" value="1000000000" readonly/>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 form-group">
+                                    <div class='col-xs-6 col-sm-3 '>
+                                        <label>Company Holding</label>
+                                    </div>
+                                    <div class='col-xs-6 col-sm-3'>
+                                        <input type="text" class="form-control" id="company_holding" readonly />
+                                    </div>
+                                    <div class='col-xs-6 col-sm-3'>
+                                        <label>In %</label>
+                                    </div>
+                                    <div class='col-xs-6 col-sm-3'>
+                                        <input type="text" class="form-control" id="company_holding_percentage" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 form-group">
+                                    <div class='col-xs-6 col-sm-3 '>
+                                        <label>Pre Sale Holding</label>
+                                    </div>
+                                    <div class='col-xs-6 col-sm-3'>
+                                        <input type="text" class="form-control" readonly />
+                                    </div>
+                                    <div class='col-xs-6 col-sm-3'>
+                                        <label>In %</label>
+                                    </div>
+                                    <div class='col-xs-6 col-sm-3'>
+                                        <input type="text" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 form-group">
+                                    <div class='col-xs-6 col-sm-3 '>
+                                        <label>Developer Holding</label>
+                                    </div>
+                                    <div class='col-xs-6 col-sm-3'>
+                                        <input type="text" class="form-control" readonly />
+                                    </div>
+                                    <div class='col-xs-6 col-sm-3'>
+                                        <label>In %</label>
+                                    </div>
+                                    <div class='col-xs-6 col-sm-3'>
+                                        <input type="text" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 form-group">
+                                    <div class='col-xs-6 col-sm-3 '>
+                                        <label>Bounty Holding</label>
+                                    </div>
+                                    <div class='col-xs-6 col-sm-3'>
+                                        <input type="text" class="form-control" readonly/>
+                                    </div>
+                                    <div class='col-xs-6 col-sm-3'>
+                                        <label>In %</label>
+                                    </div>
+                                    <div class='col-xs-6 col-sm-3'>
+                                        <input type="text" class="form-control" />
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-bar-chart-o fa-fw"></i> Allocation Management
+                        <div class="pull-right">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                    Actions
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu pull-right" role="menu">
+                                    <li>
+                                        <a href="#">Action</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Another action</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Something else here</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a href="#">Separated link</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class='col-sm-12 form-group'>
+
+                                    <div class='col-sm-6'>
+                                        <label>Supervisor Account</label>
+                                    </div>
+                                    <div class='col-sm-6'>
+                                        <input type="text" class="form-control" />
+                                    </div>
+
+                                </div>
+                                <div class="col-sm-12 form-group">
+                                    <div class='col-sm-6'>
+                                        <label>Number of Token</label>
+                                    </div>
+                                    <div class='col-sm-6'>
+                                        <input type="text" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class='col-sm-12 form-group'>
+
+
+                                    <div class='col-sm-6'>
+                                        <label>Pre sale Price</label>
+                                    </div>
+                                    <div class='col-sm-6'>
+                                        <input type="text" class="form-control" />
+                                    </div>
+
+
+                                </div>
+
+                                <div class='col-sm-12 form-group'>
+                                    <div class='col-sm-6'>
+                                        <div class="form-group">
+                                            <label>Pre sale Start date </label>
+                                            <div class='input-group date' id='datetimepicker1'>
+                                                <input type='text' class="form-control" />
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class='col-sm-6'>
+                                        <div class="form-group">
+                                            <label>Pre sale End date </label>
+                                            <div class='input-group date' id='datetimepicker2'>
+                                                <input type='text' class="form-control" />
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 form-group">
+                                    <div class='col-sm-6'>
+                                        <label>Pre sale Burn Price</label>
+                                    </div>
+                                    <div class='col-sm-6'>
+                                        <input type="text" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12 form-group">
+                                    <div class='col-sm-6'>
+                                        <div class="form-group">
+                                            <label>Pre sale Burn date </label>
+                                            <div class='input-group date' id='datetimepicker3'>
+                                                <input type='text' class="form-control" />
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <script type="text/javascript">
+                                $(function () {
+                                    $('#datetimepicker1').datetimepicker();
+                                    $('#datetimepicker2').datetimepicker();
+                                    $('#datetimepicker3').datetimepicker();
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <i class="fa fa-bar-chart-o fa-fw"></i> Pre sale
+                        <div class="pull-right">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                    Actions
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu pull-right" role="menu">
+                                    <li>
+                                        <a href="#">Action</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Another action</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Something else here</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a href="#">Separated link</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
+                        <div class="container">
+                            <div class="row">
+                                <div class='col-sm-12 form-group'>
+
+                                    <div class='col-sm-6'>
+                                        <label>Supervisor Account</label>
+                                    </div>
+                                    <div class='col-sm-6'>
+                                        <input type="text" class="form-control" />
+                                    </div>
+
+                                </div>
+                                <div class="col-sm-12 form-group">
+                                    <div class='col-sm-6'>
+                                        <label>Number of Token</label>
+                                    </div>
+                                    <div class='col-sm-6'>
+                                        <input type="text" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class='col-sm-12 form-group'>
+
+
+                                    <div class='col-sm-6'>
+                                        <label>Pre sale Price</label>
+                                    </div>
+                                    <div class='col-sm-6'>
+                                        <input type="text" class="form-control" />
+                                    </div>
+
+
+                                </div>
+
+                                <div class='col-sm-12 form-group'>
+                                    <div class='col-sm-6'>
+                                        <div class="form-group">
+                                            <label>Pre sale Start date </label>
+                                            <div class='input-group date' id='datetimepicker1'>
+                                                <input type='text' class="form-control" />
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class='col-sm-6'>
+                                        <div class="form-group">
+                                            <label>Pre sale End date </label>
+                                            <div class='input-group date' id='datetimepicker2'>
+                                                <input type='text' class="form-control" />
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 form-group">
+                                    <div class='col-sm-6'>
+                                        <label>Pre sale Burn Price</label>
+                                    </div>
+                                    <div class='col-sm-6'>
+                                        <input type="text" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12 form-group">
+                                    <div class='col-sm-6'>
+                                        <div class="form-group">
+                                            <label>Pre sale Burn date </label>
+                                            <div class='input-group date' id='datetimepicker3'>
+                                                <input type='text' class="form-control" />
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-calendar"></span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <script type="text/javascript">
+                                $(function () {
+                                    $('#datetimepicker1').datetimepicker();
+                                    $('#datetimepicker2').datetimepicker();
+                                    $('#datetimepicker3').datetimepicker();
+                                });
+                            </script>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.panel-body -->
+            </div>
+
+        </div>
+
+
+
+        <!-- /.col-lg-8 -->
+
+        <!-- /.col-lg-4 -->
+    </div>
+    <!-- /.row -->
+    </div>
+    <!-- /#page-wrapper -->
+
+
+    <script type="text/javascript" src="/bower_components/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/bower_components/moment/min/moment.min.js"></script>
+    <script type="text/javascript" src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+    <!-- <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css" /> -->
+    <link rel="stylesheet" href="/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css"
+    />
+    <script>
+        var $price = $("#num_holding"),
+            $percentage = $("#company_holding_percentage").on("input", calculatePrice),
+            $discount = $("#company_holding").on("input", calculatePerc),
+            $allowcation = $("#Allowcation_");
+
+
+        function calculatePrice() {
+            var percentage = $(this).val();
+            var price = $price.val();
+            var calcPrice = (price - (price * percentage / 100)).toFixed(2);
+            var finalPrice = (price - calcPrice);
+            console.log(finalPrice);
+            $allowcation.val(finalPrice);
+            $discount.val(calcPrice);
+        }
+
+        function calculatePerc() {
+            var discount = $(this).val();
+            var price = $price.val();
+            var calcPerc = 100 - (discount * 100 / price);
+            $percentage.val(calcPerc);
+        }
+
+    </script>
