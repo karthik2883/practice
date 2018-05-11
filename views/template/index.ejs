@@ -4,6 +4,18 @@
             margin-bottom: 5px;
             font-size: 19px;
         }
+
+        .dropdown-menu>li>button {
+            display: block;
+            padding: 3px 20px;
+            clear: both;
+            font-weight: 400;
+            line-height: 1.42857143;
+            color: #333;
+            white-space: nowrap;
+            margin: 15px;
+            width: 80%;
+        }
     </style>
     <div id="page-wrapper">
         <div class="row">
@@ -24,19 +36,14 @@
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu pull-right" role="menu">
+
                                     <li>
-                                        <a href="#">Action</a>
+                                        <button class="btn-default add_allocation">Add</button>
                                     </li>
                                     <li>
-                                        <a href="#">Another action</a>
+                                        <button class="btn-default  edit_allocation">Edit</button>
                                     </li>
-                                    <li>
-                                        <a href="#">Something else here</a>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li>
-                                        <a href="#">Separated link</a>
-                                    </li>
+
                                 </ul>
                             </div>
                         </div>
@@ -46,7 +53,7 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-lg-12">
-                                <form role="form">
+                                <form role="form" id="form_allocation">
                                     <div class="form-group">
                                         <div class="col-sm-12">
                                             <div class="col-lg-3">
@@ -57,7 +64,7 @@
                                                 </label>
                                             </div>
                                             <div class="col-lg-3">
-                                                <label class="control-label ">
+                                                <label class="control-label">
                                                     <h4 id="total_supply"> 1000000000 </h4>
                                                 </label>
                                             </div>
@@ -69,55 +76,55 @@
                                                 </label>
                                             </div>
                                             <div class="col-lg-3">
-                                                <label class="control-label " >
-                                                    <h4 id="var_avaliable"> 1000000000 </h4>
+                                                <label class="control-label ">
+                                                    <h4 id="var_avaliable">1000000000 </h4>
                                                 </label>
                                             </div>
-                                        
+
                                         </div>
                                         <div class="col-lg-6">
                                             <label class="control-label">Company Holding</label>
-                                            <input class="form-control" id="company_holding" value="" readonly>
+                                            <input class="form-control" id="company_holding" name="company_holding" value="" readonly>
                                         </div>
                                         <div class="col-lg-6">
                                             <label class="control-label">in %</label>
-                                            <input class="form-control" id="company_holding_percent" value="">
-                                            <button id="lck_company" type='button'>Lock Company</button>
+                                            <input name="company_holding_percent" type="number" class="form-control" id="company_holding_percent" value="">
+
                                         </div>
-                                    
+
                                         <div class="col-lg-6">
                                             <label class="control-label">Developer Holding</label>
-                                            <input class="form-control" id="developer_holding" value="" readonly>
+                                            <input name="developer_holding" class="form-control" id="developer_holding" value="" readonly>
                                         </div>
                                         <div class="col-lg-6">
                                             <label class="control-label">In %</label>
-                                            <input class="form-control" id="developer_holding_percent" value="">
-                                            <button id="lck_developer" type='button'>Lock Developer</button>
+                                            <input type="number" name="developer_holding_percent" class="form-control" id="developer_holding_percent" value="">
+
                                         </div>
                                         <div class="col-lg-6">
                                             <label class="control-label">Bounty Holding</label>
-                                            <input class="form-control" id="bounty_holding" value="" readonly>
+                                            <input name="bounty_holding" class="form-control" id="bounty_holding" value="" readonly>
                                         </div>
                                         <div class="col-lg-6">
                                             <label class="control-label">In %</label>
-                                            <input class="form-control" id="bounty_holding_percent" value="">
-                                            <button id="lck_bounty" type='button'>Lock Bounty</button>
+                                            <input type="number" name="bounty_holding_percent" class="form-control" id="bounty_holding_percent" value="">
+
                                         </div>
 
                                         <div class="col-lg-6">
                                             <label class="control-label">Presale and Ico Holding</label>
-                                            <input class="form-control" id="presale_holding" value="" readonly>
+                                            <input name="presale_holding" class="form-control" id="presale_holding" value="" readonly>
                                         </div>
                                         <div class="col-lg-6">
                                             <label class="control-label">In %</label>
-                                            <input class="form-control" id="presale_holding_percent" value="">
-                                            <button id="lck_presale" type='button'>Lock Presale</button>
+                                            <input type="number" name="presale_holding_percent" class="form-control" id="presale_holding_percent" value="">
+
                                         </div>
 
-                                        <div class="form-group col-lg-12">
+                                        <!-- <div class="form-group col-lg-12">
                                             <button type="submit" class="btn btn-default">Submit Button</button>
                                             <button type="reset" class="btn btn-default">Reset Button</button>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 </form>
                             </div>
@@ -126,19 +133,19 @@
                     </div>
                     <!-- /.panel-body -->
                 </div>
-           </div>     
-           </div>
-           <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Presale management</h1>
-                </div>
-                <!-- /.col-lg-12 -->
             </div>
-           <div class="row">
-                <div class="col-lg-12">
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">Presale management</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <i class="fa fa-bar-chart-o fa-fw"></i> Presale 
+                        <i class="fa fa-bar-chart-o fa-fw"></i> Presale
                         <div class="pull-right">
                             <div class="btn-group">
                                 <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
@@ -169,22 +176,22 @@
                             <div class="col-lg-12">
                                 <form role="form">
                                     <div class="form-group">
-                                       
+
                                         <div class="col-lg-6">
                                             <label class="control-label">Company Holding</label>
-                                            <input class="form-control" value="" readonly>
+                                            <input name="company_holding" class="form-control" value="" readonly>
                                         </div>
                                         <div class="col-lg-6">
                                             <label class="control-label">in %</label>
-                                            <input class="form-control" value="">
+                                            <input type="number" name="company_holding_percent" class="form-control" value="">
                                         </div>
                                         <div class="col-lg-6">
                                             <label class="control-label">Developer Holding</label>
-                                            <input class="form-control" value="" readonly>
+                                            <input name="developer_holding" class="form-control" value="" readonly>
                                         </div>
                                         <div class="col-lg-6">
                                             <label class="control-label">In %</label>
-                                            <input class="form-control" value="">
+                                            <input type="number" class="form-control" value="">
                                         </div>
                                         <div class="col-lg-6">
                                             <label class="control-label">Bounty Holding</label>
@@ -192,7 +199,7 @@
                                         </div>
                                         <div class="col-lg-6">
                                             <label class="control-label">In %</label>
-                                            <input class="form-control" value="">
+                                            <input type="number" class="form-control" value="">
                                         </div>
 
                                         <div class="col-lg-6">
@@ -215,110 +222,119 @@
                         </div>
                         <!-- /.panel-body -->
                     </div>
-                   
+
                 </div>
             </div>
-            </div>
-            </div>
+        </div>
+    </div>
 
-            <script>
-                var  $price = $("#total_supply"),
-                    $pricev = $("#var_avaliable"),
-                    $percentage = $("#company_holding_percent").on("input", calculatePrice),
-                    $discount = $("#company_holding").on("input", calculatePerc);
-                    $percentageDv = $("#developer_holding_percent").on("input", calculatePriceDv),
-                    $discountDv = $("#developer_holding").on("input", calculatePercDv);
-                    $percentageBt = $("#bounty_holding_percent").on("input", calculatePriceBt),
-                    $discountBt = $("#bounty_holding").on("input", calculatePercBt);
-                    $percentagePt = $("#presale_holding_percent").on("input", calculatePricePt),
-                    $discountPt = $("#presale_holding").on("input", calculatePercPt);
+    <script>
+        $(document).ready(function () {
+            var $price = $("#total_supply"),
+                $pricev = $("#var_avaliable"),
+                $percentage = $("#company_holding_percent").on("input", calculatePrice),
+                $discount = $("#company_holding").on("input", calculatePerc);
+            $percentageDv = $("#developer_holding_percent").on("input", calculatePriceDv),
+                $discountDv = $("#developer_holding").on("input", calculatePercDv);
+            $percentageBt = $("#bounty_holding_percent").on("input", calculatePriceBt),
+                $discountBt = $("#bounty_holding").on("input", calculatePercBt);
+            $percentagePt = $("#presale_holding_percent").on("input", calculatePricePt),
+                $discountPt = $("#presale_holding").on("input", calculatePercPt);
 
-                   function calculatePrice() {
-                    var percentage = $(this).val();
-                    var price = $price.text();
-                    var calcPrice = ((price * percentage / 100)).toFixed(2);
-                    $discount.val(calcPrice);
-                    
-                   
-                  }
-     
-                function calculatePerc() {
-                    var discount = $(this).val();
-                    var price = $price.val();
-                    var calcPerc = 100 - (discount * 100 / price);
-                    $percentage.val(calcPerc);
-                }
+            function calculatePrice() {
+                var percentage = $(this).val();
+                var price = $price.text();
+                var calcPrice = ((price * percentage / 100)).toFixed(2);
+                $discount.val(calcPrice);
+            }
+
+            function calculatePerc() {
+                var discount = $(this).val();
+                var price = $price.val();
+                var calcPerc = 100 - (discount * 100 / price);
+                $percentage.val(calcPerc);
+            }
+
+            function calculatePriceDv() {
+                var percentage = $(this).val();
+                var price = $price.text();
+                var calcPrice = ((price * percentage / 100)).toFixed(2);
+                $discountDv.val(calcPrice);
+
+            }
+
+            function calculatePercDv() {
+                var discount = $(this).val();
+                var price = $price.val();
+                var calcPerc = 100 - (discount * 100 / price);
+                $percentageDv.val(calcPerc);
+            }
+
+            function calculatePriceBt() {
+                var percentage = $(this).val();
+                var price = $price.text();
+                var calcPrice = ((price * percentage / 100)).toFixed(2);
+                $discountBt.val(calcPrice);
+            }
+
+            function calculatePercBt() {
+                var discount = $(this).val();
+                var price = $price.val();
+                var calcPerc = 100 - (discount * 100 / price);
+                $percentageBt.val(calcPerc);
+            }
+
+            function calculatePricePt() {
+                var percentage = $(this).val();
+                var price = $price.text();
+                var calcPrice = ((price * percentage / 100)).toFixed(2);
+                $discountPt.val(calcPrice);
+
+            }
+
+            function calculatePercPt() {
+                var discount = $(this).val();
+                var price = $price.val();
+                var calcPerc = 100 - (discount * 100 / price);
+                $percentagePt.val(calcPerc);
+            }
 
 
-                ////
-
-
-
-                function calculatePriceDv() {
-                    var percentage = $(this).val();
-                    var price = $price.text();
-                    var calcPrice = ((price * percentage / 100)).toFixed(2);
-                    $discountDv.val(calcPrice);
-                   
-                  }
-     
-                function calculatePercDv() {
-                    var discount = $(this).val();
-                    var price = $price.val();
-                    var calcPerc = 100 - (discount * 100 / price);
-                    $percentageDv.val(calcPerc);
-                }
-               
-               
-                function calculatePriceBt() {
-                    var percentage = $(this).val();
-                    var price = $price.text();
-                    var calcPrice = ((price * percentage / 100)).toFixed(2);
-                    $discountBt.val(calcPrice);
-                    
-                   
-                  }
-     
-                function calculatePercBt() {
-                    var discount = $(this).val();
-                    var price = $price.val();
-                    var calcPerc = 100 - (discount * 100 / price);
-                    $percentageBt.val(calcPerc);
-                }
-               
-                function calculatePricePt() {
-                    var percentage = $(this).val();
-                    var price = $price.text();
-                    var calcPrice = ((price * percentage / 100)).toFixed(2);
-                    $discountPt.val(calcPrice);                    
-                   
-                  }
-     
-                function calculatePercPt() {
-                    var discount = $(this).val();
-                    var price = $price.val();
-                    var calcPerc = 100 - (discount * 100 / price);
-                    $percentagePt.val(calcPerc);
-                }
-               
-                $("#lck_company").click(function(){
-                    $("#company_holding_percent").prop("readonly", true);
-                    var varient = $price.text()-  $("#company_holding").val();
-                    $pricev.text(varient);
+            $(".add_allocation").click(function () {
+                //check everything is filled 
+                var values = {},
+                    validation = [];
+                $.when($('#form_allocation :input').each(function () {
+                    validation.length === 0;
+                    if ($(this).val() == '') {
+                        console.log('inside');
+                        $(this).focus();
+                        $(this).attr("placeholder", "Empty Field");
+                        // return false;  
+                         validation.push("notFinished");
+                    }
+                })).then(function (e) {
+                    console.log(e.val());
+                    if ($.inArray("notFinished", validation) !== -1) {
+                        console.log('notFinished');
+                    } else {
+                        $.when($.each($('#form_allocation :input').serializeArray(), function (
+                            i, x) {
+                            values[x.name] = x.value;
+                        })).then(function () {
+                            console.log('Did things to every .element, all done.' +
+                                values);
+                            var c = JSON.stringify(values);
+                            $.post("/allocation/create", {
+                                c
+                            }, function (result) {
+                                console.log("result", result);
+                            });
+                        });
+                    }
                 });
-                $("#lck_developer").click(function(){
-                    $("#developer_holding_percent").prop("readonly", true);
-                    var varient = $price.text()-  $("#developer_holding").val();
-                    $pricev.text(varient);
-                });
-                $("#lck_bounty").click(function(){
-                    $("#bounty_holding_percent").prop("readonly", true);
-                    var varient = $price.text()-  $("#bounty_holding").val();
-                    $pricev.text(varient);
-                });
-                $("#lck_presale").click(function(){
-                    $("#presale_holding_percent").prop("readonly", true);
-                    var varient = $price.text()-  $("#presale_holding").val();
-                    $pricev.text(varient);
-                });
-            </script>
+
+            });
+
+        });
+    </script>
