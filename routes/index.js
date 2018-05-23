@@ -20,7 +20,9 @@ module.exports = function (app, passport) {
         console.log( req.session.views);
         next();
     });
-    app.get('/', isAuthenticated, function (req, res) {
+    app.use(isMiddlewareAuth);
+
+    app.get('/', function (req, res) {
         res.redirect('/admin-management');
     });
 
@@ -41,6 +43,7 @@ module.exports = function (app, passport) {
         res.redirect('/');
     });
 
+ 
 
     app.get('/signup', function (req, res) {
         res.render('template/signup', {
@@ -54,52 +57,53 @@ module.exports = function (app, passport) {
         failureRedirect: '/signup',
         failureFlash: true
     }));
-    app.get('/admin-management', isMiddlewareAuth, function (req, res) {
+    app.get('/admin-management', function (req, res) {
         res.render('template/readme', {});
     });
-    app.get('/dashboard', isMiddlewareAuth, function (req, res) {
-
+    app.get('/dashboard', function (req, res) {
         res.render('template/index', {});
     });
-    app.get('/flot', isAuthenticated, function (req, res) {
+    app.get('/flot', function (req, res) {
         res.render('template/flot', {});
     });
-    app.get('/morris', isAuthenticated, function (req, res) {
+    app.get('/morris', function (req, res) {
         res.render('template/morris', {});
     });
-    app.get('/tables', isAuthenticated, function (req, res) {
+    app.get('/tables', function (req, res) {
         res.render('template/tables', {});
     });
-    app.get('/forms', isAuthenticated, function (req, res) {
+    app.get('/forms', function (req, res) {
         res.render('template/forms', {});
     });
-    app.get('/panelswells', isAuthenticated, function (req, res) {
+    app.get('/panelswells', function (req, res) {
         res.render('template/panelswells', {});
     });
-    app.get('/buttons', isAuthenticated, function (req, res) {
+    app.get('/buttons', function (req, res) {
         res.render('template/buttons', {});
     });
-    app.get('/notifications', isAuthenticated, function (req, res) {
+    app.get('/notifications', function (req, res) {
         res.render('template/notifications', {});
     });
-    app.get('/typography', isAuthenticated, function (req, res) {
+    app.get('/typography', function (req, res) {
         res.render('template/typography', {});
     });
-    app.get('/icons', isAuthenticated, function (req, res) {
+    app.get('/icons', function (req, res) {
         res.render('template/icons', {});
     });
-    app.get('/grid', isAuthenticated, function (req, res) {
+    app.get('/grid', function (req, res) {
         res.render('template/grid', {});
     });
-    app.get('/blank', isAuthenticated, function (req, res) {
+    app.get('/blank', function (req, res) {
         res.render('template/blank', {});
-    });
-
-    app.get('/bbs', isAuthenticated, function (req, res) {
+   });
+   app.get('/restriction', function (req, res) {
+        res.render('template/restriction', {});        
+   });
+   app.get('/bbs', function (req, res) {
         res.render('template/bbs', {});
     });
 
-    app.get('/bbs/list', isAuthenticated, function (req, res) {
+    app.get('/bbs/list', function (req, res) {
         Bbs.find({},
             function (err, bbs) {
                 // In case of any error, return using the done method
@@ -111,7 +115,7 @@ module.exports = function (app, passport) {
         );
     });
 
-    app.post('/bbs/create', isAuthenticated, function (req, res) {
+    app.post('/bbs/create', function (req, res) {
 
         var newBbs = new Bbs();
         // set the user's local credentials
@@ -133,7 +137,7 @@ module.exports = function (app, passport) {
         });
     });
 
-    app.post('/bbs/delete', isAuthenticated, function (req, res) {
+    app.post('/bbs/delete', function (req, res) {
         // set the user's local credentials
         var id = req.param('id');
         Bbs.findByIdAndRemove(id, function (err) {
@@ -150,7 +154,7 @@ module.exports = function (app, passport) {
 
 
     });
-    app.post('/bbs/update', isAuthenticated, function (req, res) {
+    app.post('/bbs/update', function (req, res) {
         // set the user's local credentials
         var id = req.param('id');
 
@@ -166,12 +170,12 @@ module.exports = function (app, passport) {
                 res.send({
                     "result": true
                 });
-            })
+            });
 
-        })
+        });
     });
 
-    app.post('/allocation/create', isAuthenticated, function (req, res) {
+    app.post('/allocation/create', function (req, res) {
         var data = req.body.c;
         var parseJson = JSON.parse(data);
         Object.keys(parseJson).forEach(function (key) {
@@ -205,29 +209,44 @@ var isAuthenticated = function (req, res, next) {
         return next();
     res.redirect('/login');
 };
+
+var pathSearch = ['/login','/signup','/restriction'];
+var adminPath = ['/blank','/dashboard'];
+var superAdmin = [];
 var isMiddlewareAuth = function(req,res,next){
+    var pathname = parseurl(req).pathname;
     var newId = mongoose.Types.ObjectId(req.session.passport.user);
-     User.find({"_id":newId}, function(err, user) {
-        console.log("userinfo",user);
-        if(user.length > 0){
-            if(typeof user[0].role !=='undefined' &&  user[0].role ===1){
-                console.log('admin');
-                next(); 
-            }
-            else if(typeof user[0].role !=='undefined' && user[0].role ===0){
-                console.log('user');
-                next(); 
+    //console.log(req.path);
+     if(pathSearch.indexOf(req.path)===-1){
+        User.find({"_id":newId}, function(err, user) {
+            console.log("userinfo",user);
+            if(user.length > 0){
+                if(typeof user[0].role !=='undefined' &&  user[0].role ===1){
+                    if(adminPath.indexOf(req.path)!==-1){
+                        res.locals.user = user;
+                        return next(); 
+                    }else{
+                        res.redirect('/restriction');
+                        return next(); 
+                    }
+                }
+                else if(typeof user[0].role !=='undefined' && user[0].role ===0){
+                    console.log('user');
+                    res.locals.user = user;
+                    return next(); 
+                }else{
+                    console.log('no users');
+                    res.locals.user = user;
+                    return next(); 
+                }
             }else{
-                console.log('no users');
-                next(); 
+                req.logout();
+                res.redirect('/login');
+                next();
             }
-         }else{
-           res.redirect('/');
-             next(null, false, 
-             req.flash('message', 'Please login.'));
-         }
-      
-    });
-     
-   
+        
+        });
+      }else{
+        return next(); 
+      }       
 };
