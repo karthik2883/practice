@@ -16,5 +16,5 @@ var userModel = function () {
   });
   return mongoose.model('User', userSchema);
 };
-
+mongoose.set('debug', true);
 module.exports = new userModel();

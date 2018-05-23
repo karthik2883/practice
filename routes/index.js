@@ -1,9 +1,25 @@
 var Bbs = require('../persister/bbs');
 var Allocation = require('../persister/allocation');
+var parseurl = require('parseurl');
+var User = require('../persister/user');
+var mongoose = require('mongoose');
 
 module.exports = function (app, passport) {
 
     /* GET home page. */
+    app.use(function (req, res, next) {
+        req.session._garbage = Date();
+        req.session.touch();
+        if (!req.session.views) {
+            req.session.views = {};
+        }
+        // get the url pathname
+        var pathname = parseurl(req).pathname;
+        // count the views
+        req.session.views[pathname] = (req.session.views[pathname] || 0) + 1;
+        console.log( req.session.views);
+        next();
+    });
     app.get('/', isAuthenticated, function (req, res) {
         res.redirect('/admin-management');
     });
@@ -38,11 +54,11 @@ module.exports = function (app, passport) {
         failureRedirect: '/signup',
         failureFlash: true
     }));
-    app.get('/admin-management', isAuthenticated, function (req, res) {
+    app.get('/admin-management', isMiddlewareAuth, function (req, res) {
         res.render('template/readme', {});
     });
-    app.get('/dashboard', isAuthenticated, function (req, res) {
-        
+    app.get('/dashboard', isMiddlewareAuth, function (req, res) {
+
         res.render('template/index', {});
     });
     app.get('/flot', isAuthenticated, function (req, res) {
@@ -127,8 +143,6 @@ module.exports = function (app, passport) {
                     "result": false
                 });
             }
-
-
             res.send({
                 "result": true
             });
@@ -158,36 +172,62 @@ module.exports = function (app, passport) {
     });
 
     app.post('/allocation/create', isAuthenticated, function (req, res) {
-             var data = req.body.c;
-            var parseJson = JSON.parse(data);      
-            Object.keys(parseJson).forEach(function(key) {
-                console.log(key);
-                console.log(parseJson[key]);
-                var alC = new Allocation();
-                alC.allotment_name = key;
-                alC.value = parseJson[key];
-                alC.save(function (err) {
-                    if (err) {
-                        console.log('Error in Saving bbs: ' + err);
-                        res.send({
-                            "result": false
-                        });
-                    } else {
-                        console.log('no error');
-                    }
-                });               
+        var data = req.body.c;
+        var parseJson = JSON.parse(data);
+        Object.keys(parseJson).forEach(function (key) {
+            console.log(key);
+            console.log(parseJson[key]);
+            var alC = new Allocation();
+            alC.allotment_name = key;
+            alC.value = parseJson[key];
+            alC.save(function (err) {
+                if (err) {
+                    console.log('Error in Saving bbs: ' + err);
+                    res.send({
+                        "result": false
+                    });
+                } else {
+                    console.log('no error');
+                }
             });
-            res.send({
-                "result": true
-            });
-          
+        });
+        res.send({
+            "result": true
+        });
+
     });
 
-}
+};
 // As with any middleware it is quintessential to call next()
 // if the user is authenticated
 var isAuthenticated = function (req, res, next) {
     if (req.isAuthenticated())
         return next();
     res.redirect('/login');
+};
+var isMiddlewareAuth = function(req,res,next){
+    var newId = mongoose.Types.ObjectId(req.session.passport.user);
+     User.find({"_id":newId}, function(err, user) {
+        console.log("userinfo",user);
+        if(user.length > 0){
+            if(typeof user[0].role !=='undefined' &&  user[0].role ===1){
+                console.log('admin');
+                next(); 
+            }
+            else if(typeof user[0].role !=='undefined' && user[0].role ===0){
+                console.log('user');
+                next(); 
+            }else{
+                console.log('no users');
+                next(); 
+            }
+         }else{
+           res.redirect('/');
+             next(null, false, 
+             req.flash('message', 'Please login.'));
+         }
+      
+    });
+     
+   
 };
